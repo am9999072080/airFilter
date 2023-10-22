@@ -1,4 +1,4 @@
-package com.gridnine.testing;
+package com.gridnine.testing.airFilter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Bean that represents a flight segment.
  */
-class Segment {
+public class Segment {
     private final LocalDateTime departureDate;
 
     private final LocalDateTime arrivalDate;
@@ -17,19 +17,22 @@ class Segment {
         arrivalDate = Objects.requireNonNull(arr);
     }
 
-    LocalDateTime getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
+
         return departureDate;
     }
 
     LocalDateTime getArrivalDate() {
+
         return arrivalDate;
     }
 
     @Override
     public String toString() {
+        int i = hashCode() % 100;
         DateTimeFormatter fmt =
                 DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        return '[' + departureDate.format(fmt) + '|' + arrivalDate.format(fmt)
+        return "FLIGHT_" + i + ":[departure: " + departureDate.format(fmt) + " | arrival: " + arrivalDate.format(fmt)
                 + ']';
     }
 }
