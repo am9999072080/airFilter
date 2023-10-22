@@ -1,4 +1,4 @@
-package com.gridnine.testing;
+package com.gridnine.testing.airFilter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * Factory class to get sample list of flights.
  */
-class FlightBuilder {
-    static List<Flight> createFlights() {
+public class FlightBuilder {
+    public static List<Flight> createFlights() {
         LocalDateTime threeDaysFromNow = LocalDateTime.now().plusDays(3);
         return Arrays.asList(
                 //A normal flight with two hour duration
