@@ -54,11 +54,14 @@ public class Flight implements FlightFilter {
     @Override
     public boolean longTimeOnEarth() {
         long hours = 0;
-        for (int i = 1; i < segments.size(); i++) {
+        int i = 1;
+        while (i < segments.size()) {
             LocalDateTime pastArrival = segments.get(i - 1).getArrivalDate();
             LocalDateTime departureNext = segments.get(i).getDepartureDate();
-            long timing = pastArrival.until(departureNext, ChronoUnit.HOURS);
+            long timing;
+            timing = pastArrival.until(departureNext, ChronoUnit.HOURS);
             hours = hours + timing;
+            i++;
         }
         return hours > 2;
     }

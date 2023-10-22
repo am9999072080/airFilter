@@ -14,23 +14,32 @@ public class Main {
 
         List<Flight> flightList = FlightBuilder.createFlights();
 
-        flightList.stream().map(flight -> "" + flight).forEach(System.out::println);
+        for (Flight flight3 : flightList) {
+            String str = "" + flight3;
+            System.out.println(str);
+        }
         System.out.println();
 
 
         System.out.println("__FLIGHTS - WAITING TO DEPARTURE__");
-        flightList.stream()
-                .filter(Flight::waitingForDepartureFlight)
-                .forEach(System.out::println);
+        for (Flight flight2 : flightList) {
+            if (flight2.waitingForDepartureFlight()) {
+                System.out.println(flight2);
+            }
+        }
 
         System.out.println("\n__FLIGHTS - EXCLUDES ARRIVAL BEFORE DEPARTURE__");
-                flightList.stream()
-                .filter(Flight::excludeArrivalBeforeDepartureDate)
-                .forEach(System.out::println);
+        for (Flight flight1 : flightList) {
+            if (flight1.excludeArrivalBeforeDepartureDate()) {
+                System.out.println(flight1);
+            }
+        }
 
         System.out.println("\n__FLIGHTS - TOTAL TIME ON THE GROUND EXCEEDS THE PRESCRIBED TIME (2 HOURS)__");
-                flightList.stream()
-                .filter(Flight::longTimeOnEarth)
-                .forEach(System.out::println);
+        for (Flight flight : flightList) {
+            if (flight.longTimeOnEarth()) {
+                System.out.println(flight);
+            }
+        }
     }
 }
